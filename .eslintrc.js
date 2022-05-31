@@ -16,7 +16,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 0,
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': 2,
-    'no-console': 2,
+    'no-console': 1,
     'eslint-comments/no-unused-disable': 0,
   },
   settings: {
