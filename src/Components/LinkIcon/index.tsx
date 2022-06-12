@@ -1,16 +1,34 @@
 import React from 'react';
+import { VIEW_UPLOAD_URI } from '../../configs';
+import { CustomLink, MyLink } from '../../Redux/types';
 import { Medium } from '../CustomFonts';
 import { Icon, LinkIconWrapper, LinkWrapper } from './styles';
 interface Props {
-  icon: '';
+  link?: MyLink;
+  customLink?: CustomLink;
 }
-export const LinkIcon = ({}: Props) => {
+export const LinkIcon = ({ link, customLink }: Props) => {
+  let src,
+    title,
+    value = '';
+  if (link) {
+    src = link?.globalLink?.image;
+    title = link?.globalLink?.title;
+    value = link?.value;
+  } else if (customLink) {
+    src = customLink?.image?._id;
+    title = customLink?.title;
+    value = customLink?.value;
+  }
+  const handleClick = () => {
+    window.open('https://' + value?.replace('https://', ''), '_blank');
+  };
   return (
-    <LinkWrapper>
+    <LinkWrapper onClick={handleClick}>
       <LinkIconWrapper>
-        <Icon src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/1024px-Facebook_f_logo_%282021%29.svg.png?20210818083032" />
+        <Icon src={VIEW_UPLOAD_URI + src} />
       </LinkIconWrapper>
-      <Medium>Facebook</Medium>
+      <Medium>{title}</Medium>
     </LinkWrapper>
   );
 };

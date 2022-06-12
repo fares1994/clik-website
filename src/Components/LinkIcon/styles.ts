@@ -34,6 +34,7 @@ export const LinkWrapper = styled.div`
   align-items: center;
   width: 120px;
   margin-bottom: 20px;
+  z-index: 20;
   @media screen and (max-width: 500px) {
     width: 90px;
   }

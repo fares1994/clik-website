@@ -16,7 +16,7 @@ const App = () => {
       <ApolloProvider client={client}>
         <MantineProvider theme={Theme} withGlobalStyles withNormalizeCSS>
           <AppShell
-            // padding="md"
+            padding="md"
             // navbar={
             //   <Navbar width={{ base: 300 }} height={500} p="xs">
             //     {/* Navbar content */}
@@ -32,7 +32,7 @@ const App = () => {
               main: {
                 backgroundColor: theme.colors.gray[0],
                 padding: 0,
-                zIndex: -4,
+                zIndex: 0,
               },
             })}
           >

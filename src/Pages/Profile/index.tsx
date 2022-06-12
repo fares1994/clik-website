@@ -1,9 +1,11 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Large, LargeMedBold } from '../../Components/CustomFonts';
 import { LinkIcon } from '../../Components/LinkIcon';
+import { REST_URI } from '../../configs';
+import { useAxiosGet } from '../../Redux/helpers';
+import { UserReturn } from '../../Redux/types';
 import { Colors } from '../../theme';
-
 import {
   BackgroundImage,
   BioText,
@@ -16,10 +18,17 @@ import {
 } from './styles';
 
 const Profile = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { id } = useParams();
-  const bio_static =
-    'Ipsum is simply dummy text of the printinasdfasdfawd asdfasdf asdf ';
+  const navigate = useNavigate();
+  const { data, error, loaded } = useAxiosGet<UserReturn>({
+    url: REST_URI + `/users/user/${id}`,
+  });
+  useEffect(() => {
+    if ((loaded && !data) || error) {
+      navigate('/');
+    }
+  }, [loaded, data, navigate, error]);
+
   return (
     <ProfileContainer px={0}>
       <BackgroundImage>
@@ -28,19 +37,22 @@ const Profile = () => {
         </ProfileImageWrapper>
       </BackgroundImage>
       <UserInfo>
-        <LargeMedBold>Wajdi Alassar</LargeMedBold>
-        <Large color={Colors.orange}>Web Developer</Large>
-        <Large color={Colors.silver}>Amman - Jordan</Large>
+        <LargeMedBold>{data?.name}</LargeMedBold>
+        <Large color={Colors.orange}>{data?.title?.title}</Large>
+        <Large color={Colors.silver}>{data?.city + '-' + data?.country}</Large>
         <BioText>
-          {bio_static.length > 42
-            ? bio_static.slice(0, 42) + '...'
-            : bio_static}
+          {data?.personalBio && data?.personalBio?.length > 42
+            ? data?.personalBio?.slice(0, 42) + '...'
+            : data?.personalBio}
         </BioText>
       </UserInfo>
       <ProfileArch />
       <IconsContainer>
-        {[1, 2, 3, 1, 2, 3].map(() => (
-          <LinkIcon />
+        {data?.myLinks?.map((link) => (
+          <LinkIcon link={link} />
+        ))}
+        {data?.customLinks?.map((customLink) => (
+          <LinkIcon customLink={customLink} />
         ))}
       </IconsContainer>
     </ProfileContainer>

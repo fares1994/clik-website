@@ -6,7 +6,7 @@ const maxWidth = 480;
 export const ProfileContainer = styled(Container)`
   overflow: hidden;
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   z-index: -3;
   max-width: ${maxWidth}px;
 `;
