@@ -1,6 +1,8 @@
 import { FetchResult } from '@apollo/react-hooks';
 import { ApolloQueryResult } from 'apollo-client';
+import axios from 'axios';
 import { DocumentNode, GraphQLError } from 'graphql';
+import { useState, useEffect } from 'react';
 // import {t} from 'i18next';
 import { client } from '../App';
 import { startLoading, stopLoading } from './configsReducer';
@@ -85,4 +87,25 @@ export const Mutation = async <T, R>({
     store.dispatch(stopLoading());
     finallyCallback && finallyCallback();
   }
+};
+
+export const useAxiosGet = <T>({
+  url,
+}: {
+  url: string;
+}): { data: T | null; error: string; loaded: boolean } => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState('');
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((err) => setError(err.message))
+      .finally(() => setLoaded(true));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return { data, error, loaded };
 };
