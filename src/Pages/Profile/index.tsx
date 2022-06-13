@@ -1,3 +1,4 @@
+import { LoadingOverlay } from '@mantine/core';
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Large, LargeMedBold } from '../../Components/CustomFonts';
@@ -16,7 +17,6 @@ import {
   UserImage,
   UserInfo,
 } from './styles';
-
 const Profile = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -31,19 +31,22 @@ const Profile = () => {
 
   return (
     <ProfileContainer px={0}>
+      <LoadingOverlay visible={!loaded && !data} />
       <BackgroundImage>
         <ProfileImageWrapper>
           <UserImage src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" />
         </ProfileImageWrapper>
       </BackgroundImage>
       <UserInfo>
-        <LargeMedBold>{data?.name}</LargeMedBold>
-        <Large color={Colors.orange}>{data?.title?.title}</Large>
-        <Large color={Colors.silver}>{data?.city + '-' + data?.country}</Large>
+        <LargeMedBold>{data?.name || ''}</LargeMedBold>
+        <Large color={Colors.orange}>{data?.title?.title || ''}</Large>
+        <Large color={Colors.silver}>
+          {(data?.city || '') + '-' + (data?.country || '')}
+        </Large>
         <BioText>
           {data?.personalBio && data?.personalBio?.length > 42
-            ? data?.personalBio?.slice(0, 42) + '...'
-            : data?.personalBio}
+            ? data?.personalBio?.slice(0, 42) || '' + '...'
+            : data?.personalBio || ''}
         </BioText>
       </UserInfo>
       <ProfileArch />
