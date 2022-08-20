@@ -6,6 +6,8 @@ import {
   Navigate,
 } from 'react-router-dom';
 import Header from './Components/Header';
+import Footer from './Components/Footer';
+
 import Cart from './Pages/Cart';
 import Contacts from './Pages/Contacts';
 import FAQ from './Pages/FAQ';
@@ -32,6 +34,7 @@ const AppRoutes = () => {
         <Route path="/Profile/:id" element={<Profile />} />
         <Route path="*" element={<Navigate replace to="/home" />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };

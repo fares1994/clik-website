@@ -60,7 +60,7 @@ const Header = () => {
             onClick={handleNavigateToHowToClik}
             marginBottom={true}
           >
-            How to CLik
+            How to Clik
           </NavigationButton>
           <NavigationButton
             active={pathname.includes('faq')}
