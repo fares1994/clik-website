@@ -7,6 +7,7 @@ import { ApolloProvider } from 'react-apollo';
 import { AppShell, MantineProvider } from '@mantine/core';
 import Theme from './theme/index';
 import GlobalStyles from './theme/loadFonts';
+import 'rsuite/styles/index.less';
 export const client = makeApolloClient();
 
 const App = () => {

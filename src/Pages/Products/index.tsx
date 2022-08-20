@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Redux/store';
 import { getProductsAction } from '../../Redux/storeReducer';
 
-const Products = () => {
+const Shop = () => {
   const { products } = useAppSelector((state) => state.storeReducer);
   const dispatch = useAppDispatch();
 
@@ -12,7 +12,7 @@ const Products = () => {
 
   // eslint-disable-next-line no-console
   console.log(products, 'products');
-  return <div>Products</div>;
+  return <div>Shop</div>;
 };
 
-export default Products;
+export default Shop;

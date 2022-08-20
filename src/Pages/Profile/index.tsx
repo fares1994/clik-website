@@ -23,11 +23,18 @@ const Profile = () => {
   const { data, error, loaded } = useAxiosGet<UserReturn>({
     url: REST_URI + `/users/user/${id}`,
   });
+  const {
+    data: nfcData,
+    error: nfcError,
+    loaded: nfcLoaded,
+  } = useAxiosGet<UserReturn>({
+    url: REST_URI + `/productIds/id/${id}`,
+  });
   useEffect(() => {
-    if ((loaded && !data) || error) {
+    if ((loaded && !data && nfcLoaded && !nfcData) || (error && nfcError)) {
       navigate('/');
     }
-  }, [loaded, data, navigate, error]);
+  }, [loaded, data, navigate, error, nfcLoaded, nfcData, nfcError]);
 
   return (
     <ProfileContainer px={0}>

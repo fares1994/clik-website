@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { Colors } from '.';
 
 export default createGlobalStyle`
     @font-face {
@@ -11,5 +12,8 @@ export default createGlobalStyle`
     body {
         @import url('./fonts/DMSans-Reguler.woff');
         font-family: DmSans;
+        color: ${Colors.offBlack};
+        padding: 0px;
+        margin: 0px;
   }
 `;
