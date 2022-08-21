@@ -4,79 +4,81 @@ import { Colors } from '../../theme';
 
 const Footer = () => {
   return (
-    <FooterWrapper>
-      <FooterHeader>
-        <RightSection>
-          <Logo src="/Images/logoWhite.png" />
-          <SocialsWrapper>
-            <SocialIconWrapper>
-              <SocialIcon src="/Images/linkedin.svg" />
-            </SocialIconWrapper>
-            <SocialIconWrapper>
-              <SocialIcon src="/Images/facebook.svg" />
-            </SocialIconWrapper>
-            <SocialIconWrapper>
-              <SocialIcon src="/Images/instagram.svg" />
-            </SocialIconWrapper>
-            <SocialIconWrapper>
-              <SocialIcon src="/Images/twitter.svg" />
-            </SocialIconWrapper>
-            <SocialIconWrapper>
-              <SocialIcon src="/Images/youtube.svg" />
-            </SocialIconWrapper>
-          </SocialsWrapper>
-        </RightSection>
-        <MiddleSection>
-          <TitleWrapper>
-            <ScanWrapper>
-              <ScanWhiteText>Scan to get</ScanWhiteText>
-              <ScanOrangeText>Clik</ScanOrangeText>
-            </ScanWrapper>
-            <Split />
-          </TitleWrapper>
-          <Row>
-            <Column>
-              <QRCodeWrapper>
-                <QRCode src={'/Images/qrCode.png'} />
-              </QRCodeWrapper>
-              <DownloadApp src="/Images/googlePlay.png" />
-            </Column>
-            <Column>
-              <QRCodeWrapper>
-                <QRCode src={'/Images/qrCode.png'} />
-              </QRCodeWrapper>
-              <DownloadApp src="/Images/googlePlay.png" />
-            </Column>
-          </Row>
-        </MiddleSection>
-        <LeftSection>
-          <ColumnInstance>
-            <Title>
-              <ScanOrangeText>Shop</ScanOrangeText>
+    <>
+      <FooterWrapper>
+        <FooterHeader>
+          <RightSection>
+            <Logo src="/Images/logoWhite.png" />
+            <SocialsWrapper>
+              <SocialIconWrapper>
+                <SocialIcon src="/Images/linkedin.svg" />
+              </SocialIconWrapper>
+              <SocialIconWrapper>
+                <SocialIcon src="/Images/facebook.svg" />
+              </SocialIconWrapper>
+              <SocialIconWrapper>
+                <SocialIcon src="/Images/instagram.svg" />
+              </SocialIconWrapper>
+              <SocialIconWrapper>
+                <SocialIcon src="/Images/twitter.svg" />
+              </SocialIconWrapper>
+              <SocialIconWrapper>
+                <SocialIcon src="/Images/youtube.svg" />
+              </SocialIconWrapper>
+            </SocialsWrapper>
+          </RightSection>
+          <MiddleSection>
+            <TitleWrapper>
+              <ScanWrapper>
+                <ScanWhiteText>Scan to get</ScanWhiteText>
+                <ScanOrangeText>Clik</ScanOrangeText>
+              </ScanWrapper>
               <Split />
-            </Title>
-            <FooterButton>Clik Card</FooterButton>
-            <FooterButton>Clik Flat</FooterButton>
-            <FooterButton>Clik Brand</FooterButton>
-            <FooterButton>Clik Menu</FooterButton>
-          </ColumnInstance>
-          <ColumnInstance>
-            <Title>
-              <ScanOrangeText>Links</ScanOrangeText>
-              <Split />
-            </Title>
-            <FooterButton>How to Clik</FooterButton>
-            <FooterButton>FAQs</FooterButton>
-            <FooterButton>Contacts</FooterButton>
-          </ColumnInstance>
-        </LeftSection>
-      </FooterHeader>
+            </TitleWrapper>
+            <Row>
+              <Column>
+                <QRCodeWrapper>
+                  <QRCode src={'/Images/qrCode.png'} />
+                </QRCodeWrapper>
+                <DownloadApp src="/Images/googlePlay.png" />
+              </Column>
+              <Column>
+                <QRCodeWrapper>
+                  <QRCode src={'/Images/qrCode.png'} />
+                </QRCodeWrapper>
+                <DownloadApp src="/Images/googlePlay.png" />
+              </Column>
+            </Row>
+          </MiddleSection>
+          <LeftSection>
+            <ColumnInstance>
+              <Title>
+                <ScanOrangeText>Shop</ScanOrangeText>
+                <Split />
+              </Title>
+              <FooterButton>Clik Card</FooterButton>
+              <FooterButton>Clik Flat</FooterButton>
+              <FooterButton>Clik Brand</FooterButton>
+              <FooterButton>Clik Menu</FooterButton>
+            </ColumnInstance>
+            <ColumnInstance>
+              <Title>
+                <ScanOrangeText>Links</ScanOrangeText>
+                <Split />
+              </Title>
+              <FooterButton>How to Clik</FooterButton>
+              <FooterButton>FAQs</FooterButton>
+              <FooterButton>Contacts</FooterButton>
+            </ColumnInstance>
+          </LeftSection>
+        </FooterHeader>
+      </FooterWrapper>
       <FooterFooter>
         <CopyrightText>Copyright © 2022</CopyrightText>
         <OrangeText>Clik</OrangeText>
         <CopyrightText>. All rights reserved.</CopyrightText>
       </FooterFooter>
-    </FooterWrapper>
+    </>
   );
 };
 
@@ -94,12 +96,10 @@ const FooterHeader = styled.div`
   align-items: center;
 `;
 const FooterWrapper = styled.div`
-  position: absolute;
-  bottom: 0;
   width: 100vw;
   /* background-color: ${Colors.offBlack}; */
   display: flex;
-  height: 520px;
+  height: 465px;
   justify-content: center;
   background-image: url('Images/RectangleFooter.png');
   background-position: center;
@@ -107,8 +107,6 @@ const FooterWrapper = styled.div`
 `;
 
 const FooterFooter = styled.div`
-  position: absolute;
-  bottom: 0;
   width: 100vw;
   background-color: #3e3e3e;
   display: flex;
@@ -126,7 +124,7 @@ const RightSection = styled.div`
   height: 280px;
   justify-content: space-between;
   margin: 0px 60px 20px;
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 1000px) {
     height: 325px;
     margin: 0px 10px 0px;
   }

@@ -8,6 +8,7 @@ export default createGlobalStyle`
         url(${'./fonts/DMSans-Reguler.woff'}) format('woff');
         font-weight: 300;
         font-style: normal;
+        color: ${Colors.offBlack};
     }
     body {
         @import url('./fonts/DMSans-Reguler.woff');
