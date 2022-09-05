@@ -14,13 +14,15 @@ const SubNavigationBar = ({ currentPosition, productName }: Props) => {
         {currentPosition === 'clikStore' && (
           <>
             <ForwordSlash>/</ForwordSlash>
-            <PathTitle active={currentPosition !== 'clikStore'}>
+            <PathTitle
+              active={currentPosition !== 'clikStore' || !!productName}
+            >
               Clik Store
             </PathTitle>
             {!!productName && (
               <>
                 <ForwordSlash>/</ForwordSlash>
-                <PathTitle active={true}>{productName}</PathTitle>
+                <PathTitle active={false}>{productName}</PathTitle>
               </>
             )}
           </>

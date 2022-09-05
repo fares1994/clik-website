@@ -6,13 +6,17 @@ import { Colors } from '../../theme';
 
 interface Props {
   product: Product;
+  handleNavigateToProductDetails: (id: string) => void;
 }
-const CustomProduct = ({ product }: Props) => {
+const CustomProduct = ({ product, handleNavigateToProductDetails }: Props) => {
   const [currectChoice, setCurrentChoice] = useState<Choice>(
     product?.choices?.[0]
   );
   // eslint-disable-next-line no-console
   console.log(VIEW_UPLOAD_URI + currectChoice?.image?._id);
+  const handleOnPress = () => {
+    handleNavigateToProductDetails(product?._id);
+  };
   return (
     <ProductWrapper>
       <ImageWrapper>
@@ -21,7 +25,7 @@ const CustomProduct = ({ product }: Props) => {
       <ProductName>{product?.name}</ProductName>
       <PriceWrapper>
         <Price>{product?.price}JD</Price>
-        <OrangeButton>
+        <OrangeButton onClick={handleOnPress}>
           <ShoppingCart src={'/Images/shopping-cart.png'} />
         </OrangeButton>
       </PriceWrapper>
@@ -108,6 +112,7 @@ const PriceWrapper = styled.div`
 `;
 
 const OrangeButton = styled.div`
+  cursor: pointer;
   width: 90px;
   background-color: ${Colors.orange};
   display: flex;

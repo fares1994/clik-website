@@ -2,7 +2,12 @@ import { createSlice, current } from '@reduxjs/toolkit';
 import { Mutation, Query } from '../helpers';
 // import { Query, Mutation } from '../helpers';
 import { AppThunk, store } from '../store';
-import { CreateOrderInput, OrderProductInputFrontEnd, Product } from '../types';
+import {
+  Choice,
+  CreateOrderInput,
+  OrderProductInputFrontEnd,
+  Product,
+} from '../types';
 import { CREATE_ORDER, GET_PRODUCTS, GET_PRODUCT_BY_ID } from './graphql';
 
 interface initialStateType {
@@ -94,7 +99,10 @@ export const getProductsAction = (): AppThunk => async (dispatch) => {
 export const getProductByIdAction =
   (
     id: string,
-    setCurrentProduct: React.Dispatch<React.SetStateAction<Product | undefined>>
+    setCurrentProduct: React.Dispatch<
+      React.SetStateAction<Product | undefined>
+    >,
+    setCurrentChoice: (choice: Choice) => void
   ): AppThunk =>
   async () => {
     Query<{ id: string }, { findProductById: Product }>({
@@ -103,6 +111,7 @@ export const getProductByIdAction =
       successCallback: ({ data }) => {
         if (data?.findProductById) {
           setCurrentProduct(data?.findProductById);
+          setCurrentChoice(data?.findProductById?.choices?.[0]);
         }
       },
     });

@@ -97,7 +97,7 @@ const FooterHeader = styled.div`
 `;
 const FooterWrapper = styled.div`
   width: 100vw;
-  /* background-color: ${Colors.offBlack}; */
+  background-color: ${Colors.offBlack};
   display: flex;
   height: 465px;
   justify-content: center;
