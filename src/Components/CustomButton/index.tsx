@@ -6,10 +6,11 @@ interface Props {
   color: 'orange' | 'black';
   size: 'sm' | 'md' | 'lg';
   title: string;
+  onClick?: () => void;
 }
-const CounterComponent = ({ color, size, title }: Props) => {
+const CounterComponent = ({ color, size, title, onClick }: Props) => {
   return (
-    <Wrapper color={color} size={size}>
+    <Wrapper color={color} size={size} onClick={onClick}>
       {title}
     </Wrapper>
   );

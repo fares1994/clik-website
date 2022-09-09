@@ -2,8 +2,10 @@ import { Drawer } from '@mantine/core';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { useAppSelector } from '../../Redux/store';
 import { Colors } from '../../theme';
 const Header = () => {
+  const { selectedProducts } = useAppSelector((state) => state.storeReducer);
   const [opened, setOpened] = useState(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -26,6 +28,10 @@ const Header = () => {
   };
   const handleNavigateToContacts = () => {
     navigate('contacts');
+    opened && setOpened(false);
+  };
+  const handleNavigateToCart = () => {
+    navigate('Cart');
     opened && setOpened(false);
   };
   const toggleDrawer = () => {
@@ -107,13 +113,15 @@ const Header = () => {
             <WhatsAppIcon src="Images/whatsAppIcon.svg" />
             <PhoneNumber>+962790943343</PhoneNumber>
           </WhatsAppWrapper>
-          <ShopIconWrapper>
-            <Qnt src="Images/qnt.svg" alt="qnt" />
-            <QntNumber>0</QntNumber>
-            <ShopIconInnerWrapper>
-              <img src="Images/shopping-bag.svg" />
-            </ShopIconInnerWrapper>
-          </ShopIconWrapper>
+          {selectedProducts?.length && (
+            <ShopIconWrapper onClick={handleNavigateToCart}>
+              <Qnt src="Images/qnt.svg" alt="qnt" />
+              <QntNumber>{selectedProducts?.length}</QntNumber>
+              <ShopIconInnerWrapper>
+                <img src="Images/shopping-bag.svg" />
+              </ShopIconInnerWrapper>
+            </ShopIconWrapper>
+          )}
         </UpperWrapper>
         <NavigationWrapper>
           <NavigationButton

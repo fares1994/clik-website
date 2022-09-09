@@ -1,20 +1,25 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import SubNavigationBar from '../../Components/SubNavigationBar';
 import SubTitle from '../../Components/SubTitle';
 import { VIEW_UPLOAD_URI } from '../../configs';
 import { useAppDispatch } from '../../Redux/store';
-import { getProductByIdAction } from '../../Redux/storeReducer';
-import { Choice, Product } from '../../Redux/types';
+import {
+  addToSelectedProducts,
+  getProductByIdAction,
+} from '../../Redux/storeReducer';
+import { Choice, OrderProductInputFrontEnd, Product } from '../../Redux/types';
 import { Colors } from '../../theme';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import CounterComponent from '../../Components/Counter';
 import CustomButton from '../../Components/CustomButton';
 import useWindowSize from '../../Helpers/WindowSizeHook';
+import { toast } from 'react-toastify';
 
 const ProductDetails = () => {
+  const navigate = useNavigate();
   const [currentProduct, setCurrentProduct] = useState<Product>();
   const window = useWindowSize();
   const params = useParams();
@@ -22,29 +27,46 @@ const ProductDetails = () => {
   const dispatch = useAppDispatch();
 
   const validationSchema = yup.object().shape({
-    quantity: yup.number().min(1, 'choose minimum one').required(),
+    // quantity: yup.number().min(1, 'choose minimum one').required(),
   });
 
-  const { values, errors, touched, setFieldValue } = useFormik({
+  const { values, errors, touched, setFieldValue, handleSubmit } = useFormik({
     initialValues: {
       currentChoice: undefined,
       quantity: 0,
+      toCart: false,
     } as {
       currentChoice: Choice | undefined;
       colorHex: string;
       quantity: number;
+      toCart: boolean;
     },
-    onSubmit: () => {
-      // const { currentChoice, quantity } = submittedValues;
-      // dispatch(
-      //   addToSelectedProducts({
-      //     color: currentChoice?.colorsHex,
-      //     quantity,
-      //     product: currentProduct,
-      //     choice: currentChoice,
-      //   } as OrderProductInputFrontEnd)
-      // );
-      // goBack();
+    onSubmit: (submittedValues) => {
+      const { currentChoice, quantity, toCart } = submittedValues;
+      if (!quantity) {
+        toast('Add Items To Be Added First', {
+          type: 'error',
+          style: {
+            fontSize: 18,
+          },
+        });
+      } else {
+        dispatch(
+          addToSelectedProducts({
+            color: currentChoice?.colorsHex,
+            quantity,
+            product: currentProduct,
+            choice: currentChoice,
+          } as OrderProductInputFrontEnd)
+        );
+        toCart && navigate('/Cart');
+        toast('Items Has Been Added Successfully', {
+          type: 'success',
+          style: {
+            fontSize: 18,
+          },
+        });
+      }
     },
     validationSchema,
   });
@@ -59,6 +81,19 @@ const ProductDetails = () => {
     },
     [setFieldValue]
   );
+
+  const handleBuyNow = () => {
+    setFieldValue('toCart', true);
+    setTimeout(() => {
+      handleSubmit();
+    }, 0);
+  };
+  const handleAddToCart = () => {
+    setFieldValue('toCart', false);
+    setTimeout(() => {
+      handleSubmit();
+    }, 0);
+  };
   useEffect(() => {
     params.id &&
       dispatch(
@@ -125,6 +160,7 @@ const ProductDetails = () => {
                         ? 'md'
                         : 'sm'
                     }
+                    onClick={handleAddToCart}
                   />
                   <CustomButton
                     title="Buy it now"
@@ -136,6 +172,7 @@ const ProductDetails = () => {
                         ? 'md'
                         : 'sm'
                     }
+                    onClick={handleBuyNow}
                   />
                 </ButtonsWrapper>
               </DetailsWrapper>

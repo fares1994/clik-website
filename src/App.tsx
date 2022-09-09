@@ -8,6 +8,9 @@ import { AppShell, MantineProvider } from '@mantine/core';
 import Theme from './theme/index';
 import GlobalStyles from './theme/loadFonts';
 import 'rsuite/styles/index.less';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
 export const client = makeApolloClient();
 
 const App = () => {
@@ -41,6 +44,7 @@ const App = () => {
           </AppShell>
         </MantineProvider>
       </ApolloProvider>
+      <ToastContainer />
     </Provider>
   );
 };
