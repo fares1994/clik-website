@@ -21,9 +21,9 @@ const CounterComponent = ({ handleChange, value, size }: Props) => {
   };
   return (
     <CounterWrapper>
-      <Plus src="/Images/plus.svg" onClick={handleAdd} />
-      <NumberWrapper size={size || 'lg'}>{value}</NumberWrapper>
       <Minus src="/Images/minus.svg" onClick={handleMinus} />
+      <NumberWrapper size={size || 'lg'}>{value}</NumberWrapper>
+      <Plus src="/Images/plus.svg" onClick={handleAdd} />
     </CounterWrapper>
   );
 };
@@ -42,9 +42,12 @@ const NumberWrapper = styled(Row)<{
   background-color: ${Colors.background};
   border-radius: 30px;
   width: ${({ size }) => (size === 'sm' ? '200px' : '221px')};
-  height: ${({ size }) => (size === 'sm' ? '30px' : '50px')};
+  height: ${({ size }) => (size === 'sm' ? '30px' : '44px')};
   margin: 0px 12px;
   font-size: ${({ size }) => (size === 'lg' ? '28px' : '18px')};
+  @media only screen and (max-width: 800px) {
+    width: ${({ size }) => (size === 'sm' ? '180px' : '200px')};
+  }
 `;
 
 const CounterWrapper = styled(Row)``;

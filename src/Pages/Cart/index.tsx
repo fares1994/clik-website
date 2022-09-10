@@ -1,7 +1,119 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import styled from 'styled-components';
+import SubTitle from '../../Components/SubTitle';
+import CustomButton from '../../Components/CustomButton';
+import { Split } from '../Products/ProductsList';
+import ProductDetailsComponent from '../../Components/ProductDetailsComponent';
+import { useAppSelector } from '../../Redux/store';
+import SubNavigationBar from '../../Components/SubNavigationBar';
 
-const Cart = () => {
-  return <div>Cart</div>;
+const ProductDetails = () => {
+  const { selectedProducts } = useAppSelector((state) => state.storeReducer);
+
+  const calculateSubTotal = useMemo(() => {
+    let subTotal = 0;
+    selectedProducts?.forEach(
+      (prd) =>
+        (subTotal =
+          parseInt(prd?.product?.price, 10) * prd?.quantity + subTotal)
+    );
+    return subTotal;
+  }, [selectedProducts]);
+
+  return (
+    <div>
+      <SubTitle title="My Cart" />
+      <SubNavigationBar currentPosition="myCart" />
+      <Column>
+        <HeaderTitle>Continue Shopping</HeaderTitle>
+        <Split />
+        {!selectedProducts?.length && (
+          <NoProductsText>
+            No Selected Products, Please Choose From Shop
+          </NoProductsText>
+        )}
+        <RowInner>
+          <Column>
+            {selectedProducts?.map((product) => {
+              return <ProductDetailsComponent selectedProduct={product} />;
+            })}
+          </Column>
+          <OrderNowWrapper>
+            <PriceWrapper>
+              <PriceContent>Subtotal:</PriceContent>
+              <PriceContent>{calculateSubTotal} JD</PriceContent>
+            </PriceWrapper>
+            <CustomButton color="orange" title="Order Now" size="lg" />
+          </OrderNowWrapper>
+        </RowInner>
+      </Column>
+    </div>
+  );
 };
 
-export default Cart;
+export default ProductDetails;
+const NoProductsText = styled.div`
+  font-size: 30px;
+  color: #444444;
+  margin: 60px 0px 30px;
+  @media only screen and (max-width: 800px) {
+    font-size: 24px;
+  }
+`;
+const HeaderTitle = styled.div`
+  font-size: 24px;
+  font-weight: 400;
+  color: #444444;
+`;
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px 0px;
+`;
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+`;
+export const RowInner = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+`;
+
+const OrderNowWrapper = styled.div`
+  height: 200px;
+  width: 380px;
+  background-color: #f4f4f4;
+  border-radius: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 25px 40px;
+  margin-top: 55px;
+`;
+
+const PriceWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const PriceContent = styled.div`
+  font-weight: 700;
+  font-size: 24px;
+  color: #444444;
+`;

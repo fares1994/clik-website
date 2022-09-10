@@ -7,6 +7,7 @@ interface Props {
 }
 const SubNavigationBar = ({ currentPosition, productName }: Props) => {
   // eslint-disable-next-line no-console
+  console.log(currentPosition, 'currentPosition', !productName);
   return (
     <SubNavigationContainer>
       <RightSection>
@@ -27,21 +28,21 @@ const SubNavigationBar = ({ currentPosition, productName }: Props) => {
             )}
           </>
         )}
-        {(currentPosition === 'myCart' ||
-          currentPosition === 'ContactInfo') && (
-          <>
-            <ForwordSlash>/</ForwordSlash>
-            <PathTitle active={currentPosition !== 'myCart'}>
-              Clik Store
-            </PathTitle>
-            {currentPosition === 'ContactInfo' && (
-              <>
-                <ForwordSlash>/</ForwordSlash>
-                <PathTitle active={true}>Contact Information</PathTitle>
-              </>
-            )}
-          </>
-        )}
+        {(currentPosition === 'myCart' || currentPosition === 'ContactInfo') &&
+          !productName && (
+            <>
+              <ForwordSlash>/</ForwordSlash>
+              <PathTitle active={currentPosition !== 'myCart'}>
+                {currentPosition !== 'myCart' ? 'Clik Store' : 'My Cart'}
+              </PathTitle>
+              {currentPosition === 'ContactInfo' && (
+                <>
+                  <ForwordSlash>/</ForwordSlash>
+                  <PathTitle active={true}>Contact Information</PathTitle>
+                </>
+              )}
+            </>
+          )}
       </RightSection>
       <LeftSection />
     </SubNavigationContainer>

@@ -105,8 +105,8 @@ const ProductDetails = () => {
     <div>
       <SubTitle title="Clik Store" />
       <SubNavigationBar
-        currentPosition="clikStore"
         productName={currentProduct?.name}
+        currentPosition="clikStore"
       />
       <Column>
         <ColumnInner>

@@ -69,7 +69,7 @@ const HeadingTitle = styled.div`
   }
 `;
 
-const Split = styled.div`
+export const Split = styled.div`
   width: 700px;
   height: 3px;
   margin-top: 20px;

@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import { Drawer } from '@mantine/core';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -89,8 +90,10 @@ const Header = () => {
         </NavigationButtonsContainer>
       </Drawer>
       <ResponsiveShopIconWrapper>
-        <Qnt src="Images/qnt.svg" alt="qnt" />
-        <QntNumber>0</QntNumber>
+        <div style={{ display: !selectedProducts?.length ? 'none' : 'flex' }}>
+          <Qnt src="Images/qnt.svg" alt="qnt" />
+          <QntNumber>{selectedProducts?.length}</QntNumber>
+        </div>
         <ShopIconInnerWrapper>
           <img src="Images/shopping-bag.svg" />
         </ShopIconInnerWrapper>
@@ -113,15 +116,17 @@ const Header = () => {
             <WhatsAppIcon src="Images/whatsAppIcon.svg" />
             <PhoneNumber>+962790943343</PhoneNumber>
           </WhatsAppWrapper>
-          {selectedProducts?.length && (
-            <ShopIconWrapper onClick={handleNavigateToCart}>
+          <ShopIconWrapper onClick={handleNavigateToCart}>
+            <div
+              style={{ display: !selectedProducts?.length ? 'none' : 'flex' }}
+            >
               <Qnt src="Images/qnt.svg" alt="qnt" />
               <QntNumber>{selectedProducts?.length}</QntNumber>
-              <ShopIconInnerWrapper>
-                <img src="Images/shopping-bag.svg" />
-              </ShopIconInnerWrapper>
-            </ShopIconWrapper>
-          )}
+            </div>
+            <ShopIconInnerWrapper>
+              <img src="Images/shopping-bag.svg" />
+            </ShopIconInnerWrapper>
+          </ShopIconWrapper>
         </UpperWrapper>
         <NavigationWrapper>
           <NavigationButton
