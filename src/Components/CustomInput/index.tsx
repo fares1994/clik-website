@@ -4,8 +4,9 @@ import styled from 'styled-components';
 interface Props {
   title: string;
   placeholder: string;
-  onClick: () => void;
   error: boolean;
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
 }
 const IconResolver = (title: string) => {
   switch (title) {
@@ -19,9 +20,9 @@ const IconResolver = (title: string) => {
       return 'phone.svg';
   }
 };
-const CustomInput = ({ title, onClick, placeholder, error }: Props) => {
+const CustomInput = ({ title, placeholder, error, value, onChange }: Props) => {
   return (
-    <InputWrapper onClick={onClick} error={error}>
+    <InputWrapper error={error}>
       <Title>{title}</Title>
       <div
         // eslint-disable-next-line react-native/no-inline-styles
@@ -33,7 +34,11 @@ const CustomInput = ({ title, onClick, placeholder, error }: Props) => {
           width: '33%',
         }}
       >
-        <Placeholder placeholder={placeholder} />
+        <Placeholder
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
       </div>
 
       <Icon src={`Images/${IconResolver(title)}`} />

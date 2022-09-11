@@ -17,6 +17,7 @@ import OrderCheckout from './Pages/OrderCheckout';
 import ProductDetails from './Pages/ProductDetails';
 import Shop from './Pages/Products';
 import Profile from './Pages/Profile';
+import ThankyouComponent from './Pages/Thankyou';
 
 const AppRoutes = () => {
   return (
@@ -31,6 +32,7 @@ const AppRoutes = () => {
         <Route path="/ProductDetails/:id" element={<ProductDetails />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/OrderCheckout" element={<OrderCheckout />} />
+        <Route path="/thankyou" element={<ThankyouComponent />} />
         <Route path="/Profile/:id" element={<Profile />} />
         <Route path="*" element={<Navigate replace to="/home" />} />
       </Routes>

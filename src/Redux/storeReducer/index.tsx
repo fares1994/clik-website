@@ -1,4 +1,5 @@
 import { createSlice, current } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import { Mutation, Query } from '../helpers';
 // import { Query, Mutation } from '../helpers';
 import { AppThunk, store } from '../store';
@@ -118,7 +119,10 @@ export const getProductByIdAction =
   };
 
 export const createOrderAction =
-  (createOrderInput: CreateOrderInput): AppThunk =>
+  (
+    createOrderInput: CreateOrderInput,
+    navigateToThankyou: () => void
+  ): AppThunk =>
   async (dispatch) => {
     const selectedProducts = store.getState().storeReducer.selectedProducts;
     if (!selectedProducts.length) {
@@ -137,6 +141,16 @@ export const createOrderAction =
         if (data?.createOrder) {
           // eslint-disable-next-line no-console
           console.log('removeMe');
+          toast(
+            'You order has been created successfully, and we will contact you soon',
+            {
+              type: 'success',
+              style: {
+                fontSize: 18,
+              },
+            }
+          );
+          navigateToThankyou();
           dispatch(clearSelectedProducted());
         }
       },
