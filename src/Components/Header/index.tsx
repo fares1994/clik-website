@@ -347,7 +347,7 @@ const Qnt = styled.img`
 const QntNumber = styled.div`
   position: absolute;
   top: -10px;
-  left: -8px;
+  left: -5px;
   font-size: 16px;
   color: white;
 

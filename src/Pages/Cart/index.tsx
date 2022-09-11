@@ -6,8 +6,11 @@ import { Split } from '../Products/ProductsList';
 import ProductDetailsComponent from '../../Components/ProductDetailsComponent';
 import { useAppSelector } from '../../Redux/store';
 import SubNavigationBar from '../../Components/SubNavigationBar';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const ProductDetails = () => {
+  const navigate = useNavigate();
   const { selectedProducts } = useAppSelector((state) => state.storeReducer);
 
   const calculateSubTotal = useMemo(() => {
@@ -19,6 +22,19 @@ const ProductDetails = () => {
     );
     return subTotal;
   }, [selectedProducts]);
+
+  const navigateToContactInfo = () => {
+    if (!selectedProducts?.length) {
+      toast('Add At Least One Item', {
+        type: 'error',
+        style: {
+          fontSize: 18,
+        },
+      });
+      return;
+    }
+    navigate('/OrderCheckout');
+  };
 
   return (
     <div>
@@ -43,7 +59,12 @@ const ProductDetails = () => {
               <PriceContent>Subtotal:</PriceContent>
               <PriceContent>{calculateSubTotal} JD</PriceContent>
             </PriceWrapper>
-            <CustomButton color="orange" title="Order Now" size="lg" />
+            <CustomButton
+              color="orange"
+              title="Order Now"
+              size="lg"
+              onClick={navigateToContactInfo}
+            />
           </OrderNowWrapper>
         </RowInner>
       </Column>
@@ -60,10 +81,19 @@ const NoProductsText = styled.div`
     font-size: 24px;
   }
 `;
-const HeaderTitle = styled.div`
+export const HeaderTitle = styled.div`
   font-size: 24px;
   font-weight: 400;
   color: #444444;
+  text-align: center;
+  @media only screen and (max-width: 800px) {
+    font-size: 20px;
+    max-width: 380px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 18px;
+    max-width: 380px;
+  }
 `;
 
 export const Row = styled.div`
