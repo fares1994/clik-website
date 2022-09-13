@@ -4,7 +4,7 @@ import { Colors } from '../../theme';
 
 interface Props {
   color: 'orange' | 'black';
-  size: 'sm' | 'md' | 'lg' | 'xl';
+  size: 'sm' | 'md' | 'lg' | 'xl' | 'contact';
   title: string;
   onClick?: () => void;
 }
@@ -19,7 +19,7 @@ const CounterComponent = ({ color, size, title, onClick }: Props) => {
 export default CounterComponent;
 const Wrapper = styled.div<{
   color: 'orange' | 'black';
-  size: 'sm' | 'md' | 'lg' | 'xl';
+  size: 'sm' | 'md' | 'lg' | 'xl' | 'contact';
 }>`
   display: flex;
   justify-content: center;
@@ -35,6 +35,8 @@ const Wrapper = styled.div<{
       ? '150px'
       : size === 'xl'
       ? '400px'
+      : size === 'contact'
+      ? '500px'
       : '200px'};
   height: ${({ size }) =>
     size === 'lg'
@@ -43,6 +45,8 @@ const Wrapper = styled.div<{
       ? '38px'
       : size === 'xl'
       ? '50px'
+      : size === 'contact'
+      ? '55px'
       : '40px'};
   color: white;
   font-size: 20px;

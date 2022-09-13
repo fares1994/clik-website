@@ -38,3 +38,9 @@ export const CREATE_ORDER = gql`
     createOrder(createOrderInput: $createOrderInput)
   }
 `;
+
+export const CREATE_CONTACT_US = gql`
+  mutation createContactUs($createContactUsInput: CreateContactUsInput!) {
+    createContactUs(createContactUsInput: $createContactUsInput)
+  }
+`;

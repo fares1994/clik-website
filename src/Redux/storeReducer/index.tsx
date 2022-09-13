@@ -9,7 +9,12 @@ import {
   OrderProductInputFrontEnd,
   Product,
 } from '../types';
-import { CREATE_ORDER, GET_PRODUCTS, GET_PRODUCT_BY_ID } from './graphql';
+import {
+  CREATE_CONTACT_US,
+  CREATE_ORDER,
+  GET_PRODUCTS,
+  GET_PRODUCT_BY_ID,
+} from './graphql';
 
 interface initialStateType {
   products: Product[];
@@ -152,6 +157,24 @@ export const createOrderAction =
           );
           navigateToThankyou();
           dispatch(clearSelectedProducted());
+        }
+      },
+    });
+  };
+interface CreateContactUsInput {
+  name: string;
+  email: string;
+  message: string;
+}
+export const createContactUsAction =
+  (variables: CreateContactUsInput, cb: () => void): AppThunk =>
+  async () => {
+    Mutation<CreateContactUsInput, { createContactUs: boolean }>({
+      mutation: CREATE_CONTACT_US,
+      variables,
+      successCallback: ({ data }) => {
+        if (data?.createContactUs) {
+          cb();
         }
       },
     });

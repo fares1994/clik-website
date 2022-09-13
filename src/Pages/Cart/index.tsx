@@ -105,12 +105,15 @@ export const Row = styled.div`
   margin: 10px 0px;
 `;
 
-export const Column = styled.div`
+export const Column = styled.div<{
+  bottom?: string;
+}>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 25px;
+  margin-top: 30px;
+  margin-bottom: ${({ bottom }) => (bottom ? bottom + 'px' : '0px')};
 `;
 export const RowInner = styled.div`
   display: flex;
