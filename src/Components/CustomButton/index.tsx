@@ -7,10 +7,25 @@ interface Props {
   size: 'sm' | 'md' | 'lg' | 'xl' | 'contact';
   title: string;
   onClick?: () => void;
+  marginTop?: number;
+  style?: React.CSSProperties | undefined;
 }
-const CounterComponent = ({ color, size, title, onClick }: Props) => {
+const CounterComponent = ({
+  color,
+  size,
+  title,
+  onClick,
+  marginTop,
+  style,
+}: Props) => {
   return (
-    <Wrapper color={color} size={size} onClick={onClick}>
+    <Wrapper
+      color={color}
+      size={size}
+      onClick={onClick}
+      marginTop={marginTop}
+      style={style}
+    >
       {title}
     </Wrapper>
   );
@@ -20,7 +35,9 @@ export default CounterComponent;
 const Wrapper = styled.div<{
   color: 'orange' | 'black';
   size: 'sm' | 'md' | 'lg' | 'xl' | 'contact';
+  marginTop: number | undefined;
 }>`
+  margin-top: ${({ marginTop }) => (marginTop ? marginTop + 'px' : 0 + 'px')};
   display: flex;
   justify-content: center;
   align-items: center;

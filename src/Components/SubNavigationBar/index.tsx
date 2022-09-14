@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Colors } from '../../theme';
 interface Props {
-  currentPosition: 'clikStore' | 'myCart' | 'ContactInfo';
+  currentPosition: 'clikStore' | 'myCart' | 'ContactInfo' | 'faq';
   productName?: string;
 }
 const SubNavigationBar = ({ currentPosition, productName }: Props) => {
@@ -26,6 +26,12 @@ const SubNavigationBar = ({ currentPosition, productName }: Props) => {
                 <PathTitle active={false}>{productName}</PathTitle>
               </>
             )}
+          </>
+        )}
+        {currentPosition === 'faq' && (
+          <>
+            <ForwordSlash>/</ForwordSlash>
+            <PathTitle active={false}>FAQs</PathTitle>
           </>
         )}
         {(currentPosition === 'myCart' || currentPosition === 'ContactInfo') &&
