@@ -26,7 +26,7 @@ const HowToClik = () => {
             >
               <LeftSecTab>
                 <UpperText>Clik to Androids</UpperText>
-                <BottomText>Must have NFC on</BottomText>
+                <BottomText>Every Android with NFC</BottomText>
               </LeftSecTab>
               <RightSecTab src="Images/android.svg" />
             </Tab>
@@ -62,9 +62,53 @@ const HowToClik = () => {
                       apple: string;
                       apple_old: string;
                     }
-                  ]
+                  ].content
                 }
               </ContentText>
+              {!!contents[
+                tab as keyof {
+                  android: string;
+                  apple: string;
+                  apple_old: string;
+                }
+              ].important && (
+                <>
+                  <ContentTitle>Important!</ContentTitle>
+                  <ContentText>
+                    {
+                      contents[
+                        tab as keyof {
+                          android: string;
+                          apple: string;
+                          apple_old: string;
+                        }
+                      ].important
+                    }
+                  </ContentText>
+                </>
+              )}
+              {!!contents[
+                tab as keyof {
+                  android: string;
+                  apple: string;
+                  apple_old: string;
+                }
+              ].youAlways && (
+                <>
+                  <ContentTitle>You Always Have a Backup!</ContentTitle>
+                  <ContentText>
+                    {
+                      contents[
+                        tab as keyof {
+                          android: string;
+                          apple: string;
+                          apple_old: string;
+                        }
+                      ].youAlways
+                    }
+                  </ContentText>
+                </>
+              )}
             </LeftSecTab>
           </BottomWrapper>
         </ComponentWrapper>
@@ -74,6 +118,23 @@ const HowToClik = () => {
 };
 
 export default HowToClik;
+const ContentTitle = styled.div`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  color: #444444;
+  margin-top: 20px;
+
+  @media only screen and (max-width: 1000px) {
+    font-size: 28px;
+  }
+  @media only screen and (max-width: 800px) {
+    font-size: 24px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 20px;
+  }
+`;
 const ContentUpperText = styled.div`
   font-style: normal;
   font-weight: 700;
@@ -111,7 +172,7 @@ const ComponentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 1000px;
-  height: 707px;
+  /* height: 707px; */
   margin: 30px 0px 100px;
   @media only screen and (max-width: 1000px) {
     width: 800px;
@@ -209,7 +270,7 @@ const BottomWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 69px 67px;
-  height: 507px;
+  /* height: 507px; */
   width: 1000px;
   background-color: #f4f4f4;
   border-radius: 0px 0px 25px 25px;
