@@ -17,16 +17,29 @@ const FAQComponent = ({ title, content }: Props) => {
         <Arrow src="Images/down_arrow.svg" />
       </RowWrapper>
       {!!opened && (
-        <>
+        <ContentWrapper>
           <Splitter />
-          <Content>{content}</Content>
-        </>
+          {content.split('\n').map(function (item, key) {
+            return (
+              <Content key={key}>
+                {item}
+                <br />
+              </Content>
+            );
+          })}
+        </ContentWrapper>
       )}
     </Wrapper>
   );
 };
 
 export default FAQComponent;
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`;
 const RowWrapper = styled(Row)`
   justify-content: space-between;
   width: 100%;
