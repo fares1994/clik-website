@@ -18,6 +18,7 @@ import ProductDetails from './Pages/ProductDetails';
 import Shop from './Pages/Products';
 import Profile from './Pages/Profile';
 import ThankyouComponent from './Pages/Thankyou';
+import Compatibility from './Pages/Compatibility';
 
 const AppRoutes = () => {
   return (
@@ -29,6 +30,8 @@ const AppRoutes = () => {
         <Route path="/howToClik" element={<HowToClik />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/compatibility" element={<Compatibility />} />
+
         <Route path="/ProductDetails/:id" element={<ProductDetails />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/OrderCheckout" element={<OrderCheckout />} />

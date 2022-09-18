@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
+
 import { Drawer } from '@mantine/core';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useAppSelector } from '../../Redux/store';
@@ -8,36 +9,78 @@ import { Colors } from '../../theme';
 const Header = () => {
   const { selectedProducts } = useAppSelector((state) => state.storeReducer);
   const [opened, setOpened] = useState(false);
+  const [helpMenu, setHelpMenu] = useState(false);
+  const dropDown = useRef<HTMLDivElement>();
   const { pathname } = useLocation();
   const navigate = useNavigate();
-
+  const handleOpenHelpMenu = () => {
+    setHelpMenu(true);
+  };
+  const handleCloseHelpMenu = () => {
+    setHelpMenu(false);
+  };
   const handleNavigateToHome = () => {
     navigate('home');
     opened && setOpened(false);
+    helpMenu && setHelpMenu(false);
   };
   const handleNavigateToShop = () => {
     navigate('shop');
     opened && setOpened(false);
+    helpMenu && setHelpMenu(false);
   };
   const handleNavigateToHowToClik = () => {
     navigate('howToClik');
     opened && setOpened(false);
+    helpMenu && setHelpMenu(false);
   };
   const handleNavigateTofaq = () => {
     navigate('faq');
     opened && setOpened(false);
+    setTimeout(() => {
+      helpMenu && setHelpMenu(false);
+    }, 0);
   };
   const handleNavigateToContacts = () => {
     navigate('contacts');
     opened && setOpened(false);
+    helpMenu && setHelpMenu(false);
   };
   const handleNavigateToCart = () => {
     navigate('Cart');
     opened && setOpened(false);
+    helpMenu && setHelpMenu(false);
+  };
+  const handleNavigateToCompatibility = () => {
+    navigate('compatibility');
+    opened && setOpened(false);
+    setTimeout(() => {
+      helpMenu && setHelpMenu(false);
+    }, 0);
   };
   const toggleDrawer = () => {
     setOpened((prev) => !prev);
   };
+  useEffect(() => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropDown.current &&
+        !dropDown.current.contains(event?.target as Node | null)
+      ) {
+        handleCloseHelpMenu();
+      }
+    }
+    // Bind the event listener
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropDown]);
+
   return (
     <HeaderWrapper>
       <Drawer
@@ -148,10 +191,24 @@ const Header = () => {
             How to CLik
           </NavigationButton>
           <NavigationButton
-            active={pathname.includes('faq')}
-            onClick={handleNavigateTofaq}
+            active={false}
+            onClick={handleOpenHelpMenu}
+            ref={
+              dropDown as
+                | ((instance: HTMLDivElement | null) => void)
+                | React.RefObject<HTMLDivElement>
+                | null
+                | undefined
+            }
           >
-            FAQs
+            <DropDown opened={helpMenu}>
+              <Choice onClick={handleNavigateTofaq}>FAQs</Choice>
+              <Splitter />
+              <Choice onClick={handleNavigateToCompatibility}>
+                Compatibility
+              </Choice>
+            </DropDown>
+            Help
           </NavigationButton>
           <NavigationButton
             active={pathname.includes('contacts')}
@@ -166,7 +223,33 @@ const Header = () => {
 };
 
 export default Header;
-
+const DropDown = styled.div<{
+  opened: boolean;
+}>`
+  height: 100px;
+  width: 200px;
+  background-color: #f4f4f4;
+  border-radius: 25px;
+  position: absolute;
+  z-index: 20;
+  padding: 14px 35px;
+  display: ${({ opened }) => (opened ? 'flex' : 'none')};
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  top: 50px;
+  left: -60px;
+`;
+const Choice = styled.div`
+  font-weight: 400;
+  font-size: 20px;
+  color: #444444;
+`;
+const Splitter = styled.div`
+  height: 1px;
+  background-color: #b7b7b7;
+  width: 130px;
+`;
 const HeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: space-between;
@@ -274,6 +357,7 @@ const NavigationButton = styled.div<{
   active: boolean;
   marginBottom?: boolean;
 }>`
+  position: relative;
   color: ${({ active }) => (active ? Colors.orange : Colors.offBlack)};
   font-size: 23px;
   border: ${({ active }) => (active ? `solid 2px ${Colors.orange}` : 'none')};
