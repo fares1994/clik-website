@@ -86,9 +86,13 @@ export const HeaderTitle = styled.div`
   font-weight: 400;
   color: #444444;
   text-align: center;
+  @media only screen and (max-width: 1000px) {
+    font-size: 22px;
+    max-width: 700px;
+  }
   @media only screen and (max-width: 800px) {
     font-size: 20px;
-    max-width: 380px;
+    max-width: 420px;
   }
   @media only screen and (max-width: 600px) {
     font-size: 18px;
