@@ -31,7 +31,7 @@ export const Wrapper = styled(Row)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 1200px;
+  width: 1300px;
   justify-content: space-between;
   align-items: flex-start;
   @media only screen and (max-width: 1200px) {
