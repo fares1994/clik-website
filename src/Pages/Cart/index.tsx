@@ -116,7 +116,6 @@ export const Column = styled.div<{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
   margin-bottom: ${({ bottom }) => (bottom ? bottom + 'px' : '0px')};
 `;
 export const RowInner = styled.div`

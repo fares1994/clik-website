@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { useAppDispatch } from '../../Redux/store';
 import { createContactUsAction } from '../../Redux/storeReducer';
 
-const Contacts = () => {
+const Contacts = ({ home }: { home?: boolean }) => {
   const dispatch = useAppDispatch();
   const validationSchema = yup.object().shape({
     name: yup.string().required('Required'),
@@ -41,8 +41,9 @@ const Contacts = () => {
   };
   return (
     <div>
-      <SubTitle title="Clik Store" />
-      <Column bottom="200">
+      {!!home && <SubTitle title="Clik Store" />}
+
+      <Column bottom={home ? '200' : '0'}>
         <Title>Get in touch with us</Title>
         <Wrapper>
           <InnerWrapper>
@@ -52,12 +53,14 @@ const Contacts = () => {
               onChange={handleChange('name')}
               value={values.name}
               error={!!(errors.name && touched.name)}
+              background={!!home}
             />
             <CustomField
               placeholder="Email"
               onChange={handleChange('email')}
               value={values.email}
               error={!!(errors.email && touched.email)}
+              background={!!home}
             />
           </InnerWrapper>
           <InnerWrapper>
@@ -67,6 +70,7 @@ const Contacts = () => {
               onChange={handleChange('message')}
               value={values.message}
               error={!!(errors.message && touched.message)}
+              background={!!home}
             />
             <CustomButton
               color="orange"
@@ -98,12 +102,15 @@ export const Title = styled.div`
 export const CustomField = styled.input<{
   bottom?: string;
   error?: boolean;
+  background?: boolean;
 }>`
-  background-color: #f4f4f4;
+  background-color: ${({ background }) =>
+    background ? 'transparent' : 'white'};
+  border-color: ${({ background }) => (background ? 'transparent' : 'white')};
   width: 500px;
   height: 55px;
   border-radius: 50px;
-  border-color: transparent;
+
   outline: none;
   padding: 22px 50px;
   ::placeholder {
@@ -117,11 +124,13 @@ export const CustomField = styled.input<{
 export const MessageInput = styled.textarea<{
   bottom?: string;
   error?: boolean;
+  background?: boolean;
 }>`
-  background-color: #f4f4f4;
+  background-color: ${({ background }) =>
+    background ? 'transparent' : 'white'};
+  border-color: ${({ background }) => (background ? 'transparent' : 'white')};
   width: 500px;
   border-radius: 50px;
-  border-color: transparent;
   outline: none;
   padding: 22px 50px;
   margin-bottom: ${({ bottom }) => (bottom ? bottom + 'px' : '0px')};
