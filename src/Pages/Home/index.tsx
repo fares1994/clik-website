@@ -8,7 +8,6 @@ import { getProductsAction } from '../../Redux/storeReducer';
 import { Colors } from '../../theme';
 import Contacts from '../Contacts';
 import content from '../FAQ/content';
-import CustomButton3 from '../../Components/CustomButton';
 
 const Home = () => {
   const dispatch = useAppDispatch();
