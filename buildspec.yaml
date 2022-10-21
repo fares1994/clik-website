@@ -3,9 +3,10 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-       nodejs: 16
+       nodejs: 14
   pre_build:
     commands:
+      - n 16
       #installs dependencies into the node_modules/ directory
       - npm install -g yarn
       - yarn config set cache-folder /root/.yarn-cache
