@@ -1,15 +1,15 @@
 # Do not change version. This is the version of aws buildspec, not the version of your buldspec file.
 version: 0.2
 phases:
+  install:
+    runtime-versions:
+       nodejs: 16
   pre_build:
     commands:
       #installs dependencies into the node_modules/ directory
-      - sudo apt install curl 
-      - curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
-      - source ~/.bashrc 
-      - nvm ls
-      - nvm install node 16.7.13
       - npm install -g yarn
+      - yarn config set cache-folder /root/.yarn-cache
+      - yarn install --frozen-lockfile
       - yarn
   build:
     commands:
