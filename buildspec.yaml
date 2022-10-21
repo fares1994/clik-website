@@ -4,10 +4,11 @@ phases:
   pre_build:
     commands:
       #installs dependencies into the node_modules/ directory
-      - echo hello
+      - sudo apt install curl 
+      - curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
+      - source ~/.bashrc 
       - nvm ls
-      - node -v
-      - echo hello2 
+      - nvm install node 16.7.13
       - npm install -g yarn
       - yarn
   build:
