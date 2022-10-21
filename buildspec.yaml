@@ -4,6 +4,10 @@ phases:
   pre_build:
     commands:
       #installs dependencies into the node_modules/ directory
+      - echo hello
+      - nvm ls
+      - node -v
+      - echo hello2 
       - npm install -g yarn
       - yarn
   build:
