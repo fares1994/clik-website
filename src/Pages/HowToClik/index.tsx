@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import SubTitle from '../../Components/SubTitle';
 import { Column } from '../Cart';
 import contents from './content';
-const HowToClik = () => {
+const HowToClik = ({ home }: { home?: boolean }) => {
   const [tab, setTab] = useState<'android' | 'apple' | 'apple_old'>('android');
   const handleClickTab: React.MouseEventHandler<HTMLDivElement> | undefined = (
     e
@@ -15,7 +15,7 @@ const HowToClik = () => {
   };
   return (
     <div>
-      <SubTitle title="How to Clik" />
+      {!home && <SubTitle title="How to use Clik" />}
       <Column>
         <ComponentWrapper>
           <UpperWrapper>
@@ -23,38 +23,53 @@ const HowToClik = () => {
               active={tab === 'android'}
               onClick={handleClickTab}
               id="android"
+              home={!!home}
             >
               <LeftSecTab>
-                <UpperText>Clik to Androids</UpperText>
+                <UpperText home={!!home}>Clik to Androids</UpperText>
                 <BottomText>Every Android with NFC</BottomText>
               </LeftSecTab>
-              <RightSecTab src="Images/android.svg" />
+              <RightSecTab
+                src={`Images/${home ? 'android_white.svg' : 'android.svg'}`}
+              />
             </Tab>
-            <Tab active={tab === 'apple'} id="apple" onClick={handleClickTab}>
+            <Tab
+              active={tab === 'apple'}
+              id="apple"
+              onClick={handleClickTab}
+              home={!!home}
+            >
               <LeftSecTab>
-                <UpperText>Clik to new apples</UpperText>
+                <UpperText home={!!home}>Clik to new apples</UpperText>
                 <BottomText>apple XR, XS, 11, 12, 13</BottomText>
               </LeftSecTab>
 
-              <RightSecTab src="Images/apple.svg" />
+              <RightSecTab
+                src={`Images/${home ? 'apple_white.svg' : 'apple.svg'}`}
+              />
             </Tab>
             <Tab
               active={tab === 'apple_old'}
               id="apple_old"
               onClick={handleClickTab}
+              home={!!home}
             >
               <LeftSecTab>
-                <UpperText>Clik to old apples</UpperText>
+                <UpperText home={!!home}>Clik to old apples</UpperText>
                 <BottomText>apple 6, 7, 8, X</BottomText>
               </LeftSecTab>
-              <RightSecTab src="Images/apple.svg" />
+              <RightSecTab
+                src={`Images/${
+                  home ? 'apple_old_white.svg' : 'android_old.svg'
+                }`}
+              />
             </Tab>
           </UpperWrapper>
-          <BottomWrapper>
+          <BottomWrapper home={!!home}>
             {/* <ContentImage src="Images/how_to_clik.png" /> */}
             <LeftSecTab>
-              <ContentUpperText>Clik to Androids</ContentUpperText>
-              <ContentText>
+              <ContentUpperText home={home}>Clik to Androids</ContentUpperText>
+              <ContentText home={home}>
                 {
                   contents[
                     tab as keyof {
@@ -73,8 +88,8 @@ const HowToClik = () => {
                 }
               ].important && (
                 <>
-                  <ContentTitle>Important!</ContentTitle>
-                  <ContentText>
+                  <ContentTitle home={home}>Important!</ContentTitle>
+                  <ContentText home={home}>
                     {
                       contents[
                         tab as keyof {
@@ -95,8 +110,10 @@ const HowToClik = () => {
                 }
               ].youAlways && (
                 <>
-                  <ContentTitle>You Always Have a Backup!</ContentTitle>
-                  <ContentText>
+                  <ContentTitle home={home}>
+                    You Always Have a Backup!
+                  </ContentTitle>
+                  <ContentText home={home}>
                     {
                       contents[
                         tab as keyof {
@@ -118,11 +135,13 @@ const HowToClik = () => {
 };
 
 export default HowToClik;
-const ContentTitle = styled.div`
+const ContentTitle = styled.div<{
+  home?: boolean;
+}>`
   font-style: normal;
   font-weight: 500;
   font-size: 32px;
-  color: #444444;
+  color: ${({ home }) => (home ? '#FF8B00' : '#444444')};
   margin-top: 20px;
 
   @media only screen and (max-width: 1000px) {
@@ -135,12 +154,14 @@ const ContentTitle = styled.div`
     font-size: 20px;
   }
 `;
-const ContentUpperText = styled.div`
+const ContentUpperText = styled.div<{
+  home?: boolean;
+}>`
   font-style: normal;
   font-weight: 700;
   font-size: 40px;
   line-height: 62px;
-  color: #444444;
+  color: ${({ home }) => (home ? '#FF8B00' : '#444444')};
   @media only screen and (max-width: 1000px) {
     font-size: 38px;
     line-height: 55px;
@@ -154,10 +175,12 @@ const ContentUpperText = styled.div`
     line-height: 38px;
   }
 `;
-const ContentText = styled.div`
+const ContentText = styled.div<{
+  home?: boolean;
+}>`
   font-weight: 400;
   font-size: 24px;
-  color: #444444;
+  color: ${({ home }) => (home ? 'white' : '#444444')};
   @media only screen and (max-width: 1000px) {
     font-size: 20px;
   }
@@ -191,8 +214,8 @@ const LeftSecTab = styled.div`
   justify-content: center;
   align-items: flex-start;
 `;
-const UpperText = styled.div`
-  color: #444444;
+const UpperText = styled.div<{ home: boolean }>`
+  color: ${({ home }) => (home ? '#FFFFFF' : '#444444')};
   font-weight: 700;
   font-size: 20px;
   @media only screen and (max-width: 1000px) {
@@ -237,6 +260,7 @@ const RightSecTab = styled.img`
 `;
 const Tab = styled.div<{
   active: boolean;
+  home: boolean;
 }>`
   display: flex;
   flex-direction: row;
@@ -244,7 +268,12 @@ const Tab = styled.div<{
   align-items: center;
   padding: 24px 36px;
   cursor: pointer;
-  background-color: ${({ active }) => (active ? '#F4F4F4' : 'transparent')};
+  background-color: ${({ active, home }) =>
+    active && home
+      ? 'rgba(255, 255, 255, 0.1)'
+      : active
+      ? '#F4F4F4'
+      : 'transparent'};
   width: 33.3%;
   height: 100px;
   margin-bottom: 4px;
@@ -265,14 +294,15 @@ const UpperWrapper = styled.div`
   justify-content: space-around;
 `;
 
-const BottomWrapper = styled.div`
+const BottomWrapper = styled.div<{ home: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 69px 67px;
   /* height: 507px; */
   width: 1000px;
-  background-color: #f4f4f4;
+  background-color: ${({ home }) =>
+    home ? 'rgba(255, 255, 255, 0.1)' : '#f4f4f4'};
   border-radius: 0px 0px 25px 25px;
 
   @media only screen and (max-width: 1000px) {

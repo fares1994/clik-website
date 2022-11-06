@@ -8,6 +8,7 @@ import { getProductsAction } from '../../Redux/storeReducer';
 import { Colors } from '../../theme';
 import Contacts from '../Contacts';
 import content from '../FAQ/content';
+import HowToClik from '../HowToClik';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -207,6 +208,12 @@ const Home = () => {
       <OrangeWrapper>
         <WhiteTitle>Testimonials</WhiteTitle>
       </OrangeWrapper>
+      <WrapperDark>
+        <Column>
+          <PointTitle2>Features</PointTitle2>
+          <HowToClik home />
+        </Column>
+      </WrapperDark>
       <Wrapper1>
         <Column>
           <PointTitle2>FAQs</PointTitle2>
