@@ -111,12 +111,14 @@ export const Row = styled.div`
 
 export const Column = styled.div<{
   bottom?: string;
+  top?: string;
 }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: ${({ bottom }) => (bottom ? bottom + 'px' : '0px')};
+  margin-top: ${({ top }) => (top ? top + 'px' : '0px')};
 `;
 export const RowInner = styled.div`
   display: flex;

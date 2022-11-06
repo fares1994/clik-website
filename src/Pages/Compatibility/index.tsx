@@ -8,7 +8,7 @@ const Compatibility = () => {
   return (
     <div>
       <SubTitle title="Clik Store" />
-      <Column bottom="200">
+      <Column bottom="100" top="90">
         <HeaderTitle>
           To scan Swopi with just a tap, you need iPhone 7 and newer or any
           Android with NFC. <br /> Swopi can be placed anywhere and on any

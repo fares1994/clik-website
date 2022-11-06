@@ -43,7 +43,7 @@ const Contacts = ({ home }: { home?: boolean }) => {
     <div>
       {!!home && <SubTitle title="Clik Store" />}
 
-      <Column bottom={home ? '200' : '0'}>
+      <Column bottom={home ? '170' : '0'} top={home ? '80' : '0'}>
         <Title>Get in touch with us</Title>
         <Wrapper>
           <InnerWrapper>
