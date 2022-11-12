@@ -67,4 +67,7 @@ const Wrapper = styled.div<{
       : '40px'};
   color: white;
   font-size: 20px;
+  @media only screen and (max-width: 600px) {
+    width: 85vw;
+  }
 `;

@@ -43,17 +43,28 @@ const ContentWrapper = styled.div`
 const RowWrapper = styled(Row)`
   justify-content: space-between;
   width: 100%;
+  flex-wrap: nowrap;
 `;
 const Content = styled.div`
   font-weight: 400;
   size: 20px;
   color: #444444;
+  @media only screen and (max-width: 800px) {
+    font-size: 17px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 16px;
+  }
+  @media only screen and (max-width: 400px) {
+    font-size: 14px;
+  }
 `;
 const Wrapper = styled.div<{
   opened?: boolean;
 }>`
   padding: 10px 35px;
   display: flex;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -72,12 +83,26 @@ const Wrapper = styled.div<{
     width: 500px;
     justify-content: center;
   }
+  @media only screen and (max-width: 600px) {
+    width: 90vw;
+  }
+  @media only screen and (max-width: 400px) {
+  }
 `;
 
 const Title = styled.div`
   font-weight: 700;
   size: 24px;
   color: #444444;
+  @media only screen and (max-width: 800px) {
+    font-size: 19px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 18px;
+  }
+  @media only screen and (max-width: 400px) {
+    font-size: 15px;
+  }
 `;
 
 const Arrow = styled.img`
@@ -98,6 +123,10 @@ const Splitter = styled.div`
   }
   @media only screen and (max-width: 800px) {
     width: 450px;
+    justify-content: center;
+  }
+  @media only screen and (max-width: 600px) {
+    width: 82vw;
     justify-content: center;
   }
 `;

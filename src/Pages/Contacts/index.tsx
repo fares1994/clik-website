@@ -92,11 +92,23 @@ export const Wrapper = styled(Row)`
 `;
 export const InnerWrapper = styled(Column)`
   margin: 0px 35px;
+  @media only screen and (max-width: 600px) {
+    margin: 0px;
+  }
 `;
 export const Title = styled.div`
   color: #ff8b00;
   font-weight: 700;
   font-size: 50px;
+  @media only screen and (max-width: 1200px) {
+    font-size: 45px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 40px;
+  }
+  @media only screen and (max-width: 400px) {
+    font-size: 32px;
+  }
 `;
 
 export const CustomField = styled.input<{
@@ -119,6 +131,19 @@ export const CustomField = styled.input<{
   }
   margin-bottom: ${({ bottom }) => (bottom ? bottom + 'px' : '0px')};
   border: ${({ error }) => (error ? '1px solid red' : 'none')};
+  @media only screen and (max-width: 600px) {
+    width: 85vw;
+    ::placeholder {
+      font-size: 20px;
+    }
+    padding: 18px 30px;
+  }
+  @media only screen and (max-width: 400px) {
+    ::placeholder {
+      font-size: 18px;
+      padding: 16px 10px;
+    }
+  }
 `;
 
 export const MessageInput = styled.textarea<{
@@ -140,5 +165,22 @@ export const MessageInput = styled.textarea<{
     color: #b7b7b7;
     text-align: start;
     font-size: 24px;
+  }
+  @media only screen and (max-width: 1200px) {
+    margin-top: 25px;
+  }
+  @media only screen and (max-width: 600px) {
+    width: 85vw;
+    ::placeholder {
+      font-size: 20px;
+    }
+    padding: 18px 30px;
+  }
+
+  @media only screen and (max-width: 400px) {
+    ::placeholder {
+      font-size: 18px;
+      padding: 16px 10px;
+    }
   }
 `;

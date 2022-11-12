@@ -109,11 +109,9 @@ const Home = () => {
           </WhiteContent>
         </InnerWrapperNoBoder>
       </OrangeWrapper>
-      <Wrapper1>
+      <WhiteWrapper>
         <RightSection>
-          <Wrapper5>
-            <TwoPhones src="Images/twoPhones.svg" />
-          </Wrapper5>
+          <TwoPhones src="Images/twoPhones.svg" />
         </RightSection>
         <LeftSection>
           <TwoPhonesContentWrapper>
@@ -125,19 +123,17 @@ const Home = () => {
             </WhtsClikContent>
           </TwoPhonesContentWrapper>
         </LeftSection>
-      </Wrapper1>
+      </WhiteWrapper>
       <Wrapper7>
-        <LeftSection>
-          <TwoPhonesContentWrapper>
-            <PointTitle>
-              Custom icons <br /> and titles
-            </PointTitle>
-            <WhtsClikContent>
-              Set custom icons and titles for each of your links! Setting better
-              icons and titles can be great for engagement and tap through rate.
-            </WhtsClikContent>
-          </TwoPhonesContentWrapper>
-        </LeftSection>
+        <TwoPhonesContentWrapper>
+          <PointTitle>
+            Custom icons <br /> and titles
+          </PointTitle>
+          <WhtsClikContent>
+            Set custom icons and titles for each of your links! Setting better
+            icons and titles can be great for engagement and tap through rate.
+          </WhtsClikContent>
+        </TwoPhonesContentWrapper>
         <RightSection>
           <Image2 src="Images/iconsnphone.svg" />
         </RightSection>
@@ -214,7 +210,7 @@ const Home = () => {
           <HowToClik home />
         </Column>
       </WrapperDark>
-      <Wrapper1>
+      <WhiteWrapper>
         <Column>
           <PointTitle2>FAQs</PointTitle2>
           {content?.slice(0, 4)?.map((com) => (
@@ -225,7 +221,7 @@ const Home = () => {
             <ButtonOrange>Comaptibility</ButtonOrange>
           </ButtonsWrapper>
         </Column>
-      </Wrapper1>
+      </WhiteWrapper>
       <Wrapper7>
         <Contacts />
       </Wrapper7>
@@ -250,6 +246,11 @@ const ButtonsWrapper = styled.div`
     width: 500px;
     justify-content: center;
   }
+  @media only screen and (max-width: 400px) {
+    width: 350px;
+    justify-content: center;
+    flex-direction: column;
+  }
 `;
 const Column = styled.div`
   display: flex;
@@ -261,11 +262,31 @@ const XIcon = styled.img`
   height: 41px;
   width: 41px;
   margin-top: 36px;
+  @media only screen and (max-width: 600px) {
+    height: 36px;
+    width: 36px;
+    margin-top: 36px;
+  }
+  @media only screen and (max-width: 400px) {
+    height: 33px;
+    width: 33px;
+    margin-top: 29px;
+  }
 `;
 const CheckIcon = styled.img`
   height: 41px;
   width: 41px;
   margin-top: 36px;
+  @media only screen and (max-width: 600px) {
+    height: 36px;
+    width: 36px;
+    margin-top: 37px;
+  }
+  @media only screen and (max-width: 400px) {
+    height: 33px;
+    width: 33px;
+    margin-top: 29px;
+  }
 `;
 
 const Text0 = styled.div`
@@ -277,11 +298,45 @@ const Text0 = styled.div`
   text-align: center;
   margin-top: 20px;
   margin-bottom: 10px;
+  @media only screen and (max-width: 1000px) {
+    font-size: 23px;
+  }
+  @media only screen and (max-width: 800px) {
+    font-size: 22px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 20px;
+  }
+  @media only screen and (max-width: 400px) {
+    font-size: 14px;
+    margin-bottom: 33px;
+  }
 `;
 const Logo9 = styled.img`
   height: 58px;
   width: 75px;
   margin-bottom: 3px;
+  @media only screen and (max-width: 1000px) {
+    height: 56px;
+    width: 72px;
+    margin-top: 4px;
+  }
+  @media only screen and (max-width: 800px) {
+    height: 53px;
+    width: 69px;
+    margin-top: 7px;
+  }
+  @media only screen and (max-width: 600px) {
+    width: 55px;
+    height: 42px;
+    margin-top: 13px;
+  }
+  @media only screen and (max-width: 400px) {
+    width: 42px;
+    height: 28px;
+    margin-top: 28px;
+    margin-bottom: 29px;
+  }
 `;
 const ColumnTextWrapper = styled.div`
   height: 594px;
@@ -296,21 +351,90 @@ const ColumnTextWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  @media only screen and (max-width: 1350px) {
+    width: 140px;
+    right: 62px;
+  }
+  @media only screen and (max-width: 1200px) {
+    width: 130px;
+    right: 58px;
+  }
+  @media only screen and (max-width: 1000px) {
+    width: 110px;
+    right: 54px;
+  }
+  @media only screen and (max-width: 800px) {
+    width: 85px;
+    right: 30px;
+  }
+  @media only screen and (max-width: 600px) {
+    right: 26px;
+    padding: 26px 33px;
+    height: 560px;
+  }
+  @media only screen and (max-width: 400px) {
+    padding: 10px 10px;
+    width: 47px;
+    right: 10px;
+    height: 490px;
+  }
 `;
 const ColumnTextWrapper2 = styled(ColumnTextWrapper)`
   right: 250px;
+  @media only screen and (max-width: 1350px) {
+    right: 245px;
+  }
+  @media only screen and (max-width: 1200px) {
+    right: 231px;
+  }
+  @media only screen and (max-width: 1000px) {
+    right: 200px;
+  }
+  @media only screen and (max-width: 800px) {
+    right: 138px;
+  }
+  @media only screen and (max-width: 600px) {
+    right: 132px;
+  }
+  @media only screen and (max-width: 400px) {
+    right: 70px;
+  }
 `;
 const Content9 = styled.div`
   font-size: 14px;
   font-weight: 400;
   line-height: 23px;
   color: #ffffff;
+  @media only screen and (max-width: 1000px) {
+    font-size: 13px;
+  }
+  @media only screen and (max-width: 800px) {
+    font-size: 12px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 11px;
+  }
+  @media only screen and (max-width: 400px) {
+    font-size: 10px;
+  }
 `;
 const Title9 = styled.div`
   font-size: 24px;
   font-weight: 700;
   line-height: 39px;
   color: #ffffff;
+  @media only screen and (max-width: 1000px) {
+    font-size: 23px;
+  }
+  @media only screen and (max-width: 800px) {
+    font-size: 21px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 18px;
+  }
+  @media only screen and (max-width: 400px) {
+    font-size: 16px;
+  }
 `;
 const TextWrapper = styled.div`
   display: flex;
@@ -318,6 +442,21 @@ const TextWrapper = styled.div`
   align-items: flex-start;
   flex-direction: column;
   margin: 0px 100px;
+  @media only screen and (max-width: 1000px) {
+    margin: 0px 90px;
+  }
+  @media only screen and (max-width: 800px) {
+    margin: 0px 80px;
+  }
+  @media only screen and (max-width: 700px) {
+    margin: 0px 60px;
+  }
+  @media only screen and (max-width: 600px) {
+    margin: 0px 40px;
+  }
+  @media only screen and (max-width: 400px) {
+    margin: 0px 30px;
+  }
 `;
 const PointWrapper = styled.div<{ highLight?: boolean }>`
   background-color: ${({ highLight }) =>
@@ -330,36 +469,149 @@ const PointWrapper = styled.div<{ highLight?: boolean }>`
   justify-content: flex-start;
   align-items: center;
   position: relative;
+  @media only screen and (max-width: 1350px) {
+  }
+  @media only screen and (max-width: 1200px) {
+  }
+  @media only screen and (max-width: 1000px) {
+  }
+  @media only screen and (max-width: 800px) {
+  }
+  @media only screen and (max-width: 600px) {
+    height: 70px;
+  }
+  @media only screen and (max-width: 400px) {
+    height: 62px;
+  }
 `;
 const Wrapper6 = styled.div`
   width: 1200px;
   justify-content: flex-start;
   margin-top: 50px;
   position: relative;
+  @media only screen and (max-width: 1350px) {
+    width: 1100px;
+  }
+  @media only screen and (max-width: 1200px) {
+    width: 990px;
+  }
+  @media only screen and (max-width: 1000px) {
+    width: 790px;
+  }
+  @media only screen and (max-width: 800px) {
+    width: 90vw;
+  }
+  @media only screen and (max-width: 700px) {
+  }
+  @media only screen and (max-width: 600px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+  @media only screen and (max-width: 500px) {
+  }
+  @media only screen and (max-width: 450px) {
+  }
+  @media only screen and (max-width: 400px) {
+    width: 95vw;
+  }
+  @media only screen and (max-width: 350px) {
+  }
 `;
 const Image2 = styled.img`
   height: 367px;
   width: 566px;
+  @media only screen and (max-width: 1400px) {
+    height: 350px;
+    width: 540px;
+  }
+  @media only screen and (max-width: 1350px) {
+    height: 340px;
+    width: 520px;
+  }
+  @media only screen and (max-width: 1200px) {
+    height: 320px;
+    width: 490px;
+  }
+  @media only screen and (max-width: 1000px) {
+    height: 300px;
+    width: 470px;
+  }
+  @media only screen and (max-width: 800px) {
+    height: 280px;
+    width: 440px;
+  }
+  @media only screen and (max-width: 600px) {
+    height: 260px;
+    width: 400px;
+  }
+  @media only screen and (max-width: 400px) {
+    height: 240px;
+    width: 350px;
+  }
 `;
-const Wrapper5 = styled.div`
-  height: 600px;
-  width: 600px;
-  background-color: #ffffff;
-  border-radius: 50px;
-`;
+
 const PointTitle = styled.div`
   color: ${Colors.orange};
   font-size: 58px;
   font-weight: 700;
   line-height: 55px;
   margin: 0px 0px 40px;
+  @media only screen and (max-width: 1400px) {
+    font-size: 56px;
+    line-height: 50px;
+    margin: 0px 0px 38px;
+  }
+  @media only screen and (max-width: 1350px) {
+    font-size: 50px;
+    line-height: 48px;
+    margin: 0px 0px 35px;
+  }
+  @media only screen and (max-width: 1200px) {
+    font-size: 40px;
+    line-height: 45px;
+    margin: 0px 0px 32px;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 38px;
+    line-height: 42px;
+    margin: 0px 0px 28px;
+  }
+  @media only screen and (max-width: 800px) {
+    font-size: 34px;
+    line-height: 36px;
+    margin: 0px 0px 26px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 30px;
+    line-height: 34px;
+    margin: 0px 0px 22px;
+  }
+  @media only screen and (max-width: 400px) {
+    font-size: 28px;
+    line-height: 32px;
+    margin: 0px 0px 20px;
+  }
 `;
 const PointTitle2 = styled(PointTitle)`
   color: ${Colors.orange};
-  font-size: 58px;
   font-weight: 700;
   line-height: 55px;
   margin: 0px 100px 70px;
+  @media only screen and (max-width: 1000px) {
+    margin: 0px 90px 70px;
+  }
+  @media only screen and (max-width: 800px) {
+    margin: 0px 80px 70px;
+  }
+  @media only screen and (max-width: 700px) {
+    margin: 0px 60px 70px;
+  }
+  @media only screen and (max-width: 600px) {
+    margin: 0px 40px 70px;
+  }
+  @media only screen and (max-width: 400px) {
+    margin: 0px 30px 70px;
+  }
 `;
 const TwoPhonesContentWrapper = styled.div`
   display: flex;
@@ -370,11 +622,60 @@ const TwoPhonesContentWrapper = styled.div`
   border-radius: 50px;
   padding: 50px 80px;
   width: 700px;
+  @media only screen and (max-width: 1400px) {
+    padding: 48px 72px;
+    width: 680px;
+  }
+  @media only screen and (max-width: 1350px) {
+    padding: 44px 66px;
+    width: 620px;
+  }
+  @media only screen and (max-width: 1200px) {
+    padding: 40px 55px;
+    width: 460px;
+  }
+  @media only screen and (max-width: 1000px) {
+    padding: 36px 52px;
+    width: 440px;
+  }
+  @media only screen and (max-width: 800px) {
+    padding: 32px 46px;
+    width: 400px;
+  }
+  @media only screen and (max-width: 600px) {
+    padding: 30px 42px;
+    width: 380px;
+  }
+  @media only screen and (max-width: 400px) {
+    padding: 28px 38px;
+    width: 340px;
+  }
 `;
 const TwoPhones = styled.img`
   width: 570px;
   height: 570px;
   align-self: flex-end;
+  @media only screen and (max-width: 1200px) {
+    width: 500px;
+    height: 500px;
+  }
+  @media only screen and (max-width: 1000px) {
+    width: 440px;
+    height: 440px;
+  }
+  @media only screen and (max-width: 800px) {
+    width: 450px;
+    height: 450px;
+    align-self: center;
+  }
+  @media only screen and (max-width: 600px) {
+    width: 410px;
+    height: 410px;
+  }
+  @media only screen and (max-width: 400px) {
+    width: 350px;
+    height: 350px;
+  }
 `;
 const CustomButton = styled.div`
   cursor: pointer;
@@ -396,6 +697,14 @@ const CustomButton = styled.div`
     width: 300px;
     height: 50px;
   }
+  @media only screen and (max-width: 600px) {
+    width: 280px;
+    height: 42px;
+  }
+  @media only screen and (max-width: 600px) {
+    width: 250px;
+    height: 40px;
+  }
 `;
 const ButtonOrange = styled(CustomButton)`
   color: ${Colors.white};
@@ -404,6 +713,34 @@ const ButtonOrange = styled(CustomButton)`
 const ProductImage = styled.img`
   height: 90px;
   width: 90px;
+  @media only screen and (max-width: 1400px) {
+    height: 85px;
+    width: 85px;
+  }
+  @media only screen and (max-width: 1350px) {
+    height: 80px;
+    width: 80px;
+  }
+  @media only screen and (max-width: 1200px) {
+    height: 75px;
+    width: 75px;
+  }
+  @media only screen and (max-width: 1000px) {
+    height: 72px;
+    width: 72px;
+  }
+  @media only screen and (max-width: 800px) {
+    height: 65px;
+    width: 65px;
+  }
+  @media only screen and (max-width: 600px) {
+    height: 60px;
+    width: 60px;
+  }
+  @media only screen and (max-width: 400px) {
+    height: 55px;
+    width: 55px;
+  }
 `;
 const ProductsWrapper = styled.div`
   display: flex;
@@ -421,6 +758,37 @@ const ProductWrapper = styled.div`
   align-items: center;
   border-radius: 10000px;
   margin: 0px 30px;
+  @media only screen and (max-width: 1400px) {
+    height: 200px;
+    width: 200px;
+  }
+  @media only screen and (max-width: 1350px) {
+    height: 180px;
+    width: 180px;
+  }
+  @media only screen and (max-width: 1200px) {
+    height: 170px;
+    width: 170px;
+  }
+  @media only screen and (max-width: 1000px) {
+    height: 160px;
+    width: 160px;
+  }
+  @media only screen and (max-width: 800px) {
+    height: 150px;
+    width: 150px;
+    margin: 0px 25px;
+  }
+  @media only screen and (max-width: 600px) {
+    height: 130px;
+    width: 130px;
+    margin: 0px 20px;
+  }
+  @media only screen and (max-width: 400px) {
+    height: 100px;
+    width: 100px;
+    margin: 0px 10px;
+  }
 `;
 const BubbleTitle = styled.div`
   background-color: #ffffff;
@@ -430,11 +798,59 @@ const BubbleTitle = styled.div`
   color: #444444;
   font-weight: 700;
   font-size: 29px;
+  text-align: center;
+  @media only screen and (max-width: 1400px) {
+    font-size: 28px;
+  }
+  @media only screen and (max-width: 1350px) {
+    font-size: 27px;
+    width: 1100px;
+  }
+  @media only screen and (max-width: 1200px) {
+    font-size: 24px;
+    width: 950px;
+    padding: 40px 60px;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 22px;
+    width: 750px;
+    padding: 32px 38px;
+  }
+  @media only screen and (max-width: 800px) {
+    font-size: 19px;
+    width: 550px;
+    padding: 30px 34px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 18px;
+    padding: 28px 28px;
+    width: 90vw;
+  }
 `;
 const PhoneIcon = styled.img`
   height: 452px;
   width: 678px;
   margin-top: 60px;
+  @media only screen and (max-width: 1000px) {
+    height: 400px;
+    width: 600px;
+    margin-top: 60px;
+  }
+  @media only screen and (max-width: 800px) {
+    height: 350px;
+    width: 500px;
+    margin-top: 50px;
+  }
+  @media only screen and (max-width: 600px) {
+    height: 300px;
+    width: 420px;
+    margin-top: 40px;
+  }
+  @media only screen and (max-width: 600px) {
+    height: 250px;
+    width: 320px;
+    margin-top: 40px;
+  }
 `;
 const WhatCanUseText = styled.div`
   font-size: 24px;
@@ -538,6 +954,19 @@ const Wrapper1 = styled.div`
   width: 100%;
   height: 750px;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  @media only screen and (max-width: 800px) {
+    flex-direction: column;
+  }
+`;
+const WhiteWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  padding: 100px 0px;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -776,10 +1205,10 @@ const WhiteContent = styled.div`
     font-size: 18px;
   }
   @media only screen and (max-width: 600px) {
-    font-size: 16px;
-  }
-  @media only screen and (max-width: 600px) {
     font-size: 14px;
+  }
+  @media only screen and (max-width: 400px) {
+    font-size: 12px;
   }
 `;
 const WrapperDarkColumn = styled(WrapperDark)`
@@ -788,6 +1217,9 @@ const WrapperDarkColumn = styled(WrapperDark)`
   align-items: center;
 `;
 
-const Wrapper7 = styled(Wrapper1)`
+const Wrapper7 = styled(WhiteWrapper)`
   background-color: #f4f4f4;
+  @media only screen and (max-width: 600px) {
+    justify-content: space-around;
+  }
 `;
