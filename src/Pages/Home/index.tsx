@@ -54,9 +54,9 @@ const Home = () => {
             athlete or photographer, or simply someone who loves technology.
           </WhatCanUseText>
         </RightSection>
-        <LeftSection>
-          <MessageImage src="Images/Message.svg" />
-        </LeftSection>
+        {/* <LeftSection> */}
+        <MessageImage src="Images/Message.svg" />
+        {/* </LeftSection> */}
       </WrapperDark>
       <OrangeWrapper>
         <InnerWrapper>
@@ -441,16 +441,61 @@ const WhatCanUseText = styled.div`
   font-weight: 400;
   color: #ffffff;
   text-align: center;
+  @media only screen and (max-width: 1000px) {
+    font-size: 20px;
+  }
+  @media only screen and (max-width: 800px) {
+    font-size: 18px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 18px;
+  }
 `;
 const WhatCanUseClik = styled.div`
   font-weight: 600;
   font-size: 60px;
   color: #ff8b00;
   margin-bottom: 80px;
+  @media only screen and (max-width: 1400px) {
+    font-size: 52px;
+    margin-bottom: 70px;
+  }
+  @media only screen and (max-width: 1200px) {
+    font-size: 48px;
+    margin-bottom: 55px;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+  @media only screen and (max-width: 800px) {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
 `;
 const MessageImage = styled.img`
   height: 834px;
   width: 815px;
+  @media only screen and (max-width: 1400px) {
+    height: 700px;
+    width: 700px;
+  }
+  @media only screen and (max-width: 1200px) {
+    height: 600px;
+    width: 600px;
+  }
+  @media only screen and (max-width: 1000px) {
+    height: 480px;
+    width: 480px;
+  }
+  @media only screen and (max-width: 600px) {
+    height: 380px;
+    width: 380px;
+  }
 `;
 const HowItWorksText = styled.div`
   font-weight: 600;
@@ -517,6 +562,9 @@ const WrapperDark = styled(Wrapper2)`
   background-color: #444444;
   flex-direction: row;
   justify-content: center;
+  @media only screen and (max-width: 800px) {
+    flex-wrap: wrap;
+  }
 `;
 const RightSection = styled.div`
   display: flex;
