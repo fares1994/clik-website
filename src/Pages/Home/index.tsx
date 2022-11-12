@@ -694,6 +694,37 @@ const InnerWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 20px 57px;
+  @media only screen and (max-width: 1350px) {
+    width: 1050px;
+    height: 450px;
+  }
+  @media only screen and (max-width: 1100px) {
+    width: 950px;
+    border-width: 23px;
+    height: 420px;
+  }
+  @media only screen and (max-width: 1000px) {
+    width: 750px;
+    border-width: 21px;
+    height: 400px;
+  }
+  @media only screen and (max-width: 800px) {
+    width: 580px;
+    border-width: 20px;
+    height: 360px;
+  }
+  @media only screen and (max-width: 600px) {
+    width: 450px;
+    border-width: 19px;
+    height: 290px;
+    padding: 18px 40px;
+  }
+  @media only screen and (max-width: 400px) {
+    width: 360px;
+    border-width: 17px;
+    height: 260px;
+    padding: 16px 32px;
+  }
 `;
 const InnerWrapperNoBoder = styled(InnerWrapper)`
   border: none;
@@ -707,6 +738,24 @@ const WhiteTitle = styled.div`
   color: white;
   text-align: center;
   font-weight: 700;
+  @media only screen and (max-width: 1400px) {
+    font-size: 52px;
+  }
+  @media only screen and (max-width: 1200px) {
+    font-size: 48px;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 30px;
+  }
+  @media only screen and (max-width: 800px) {
+    font-size: 26px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 24px;
+  }
+  @media only screen and (max-width: 400px) {
+    font-size: 20px;
+  }
 `;
 
 const WhiteContent = styled.div`
@@ -714,6 +763,24 @@ const WhiteContent = styled.div`
   font-weight: 400px;
   color: white;
   text-align: center;
+  @media only screen and (max-width: 1400px) {
+    font-size: 24px;
+  }
+  @media only screen and (max-width: 1200px) {
+    font-size: 22px;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 20px;
+  }
+  @media only screen and (max-width: 800px) {
+    font-size: 18px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 16px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 14px;
+  }
 `;
 const WrapperDarkColumn = styled(WrapperDark)`
   flex-direction: column;
