@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import FAQComponent from '../../Components/FAQComponent';
+import Testimonials from '../../Components/Testimonials';
 import { VIEW_UPLOAD_URI } from '../../configs';
 import { useAppDispatch, useAppSelector } from '../../Redux/store';
 import { getProductsAction } from '../../Redux/storeReducer';
@@ -203,6 +204,7 @@ const Home = () => {
       </WrapperDark>
       <OrangeWrapper>
         <WhiteTitle>Testimonials</WhiteTitle>
+        <Testimonials />
       </OrangeWrapper>
       <WrapperDark>
         <Column>
