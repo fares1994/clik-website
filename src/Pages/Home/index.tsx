@@ -45,7 +45,7 @@ const Home = () => {
       <Wrapper2>
         <HowItWorksText>How it works?</HowItWorksText>
         <VideoWrapper />
-        <HowItWorksImg src="Images/howItWorks.png" />
+        <HowItWorksImg src="Images/howItWorks.svg" />
       </Wrapper2>
       <WrapperDark>
         <RightSection>
@@ -954,12 +954,13 @@ const HomePageContainer = styled.div``;
 
 const Wrapper1 = styled.div`
   width: 100%;
+  padding-top: 75px;
   height: 750px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-color: white;
   @media only screen and (max-width: 800px) {
     flex-direction: column;
