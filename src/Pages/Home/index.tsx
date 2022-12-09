@@ -871,7 +871,7 @@ const WhatCanUseText = styled.div`
 `;
 const WhatCanUseClik = styled.div`
   font-weight: 600;
-  font-size: 60px;
+  font-size: 64px;
   color: #ff8b00;
   margin-bottom: 80px;
   @media only screen and (max-width: 1400px) {
@@ -964,6 +964,7 @@ const Wrapper1 = styled.div`
   background-color: white;
   @media only screen and (max-width: 800px) {
     flex-direction: column;
+    align-items: center;
   }
 `;
 const WhiteWrapper = styled.div`
@@ -996,6 +997,7 @@ const WrapperDark = styled(Wrapper2)`
   justify-content: center;
   @media only screen and (max-width: 800px) {
     flex-wrap: wrap;
+    align-items: center;
   }
 `;
 const RightSection = styled.div`
