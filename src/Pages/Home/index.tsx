@@ -876,28 +876,29 @@ const WhatCanUseClik = styled.div`
   margin-bottom: 80px;
   @media only screen and (max-width: 1400px) {
     font-size: 52px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
   }
   @media only screen and (max-width: 1200px) {
-    font-size: 48px;
-    margin-bottom: 55px;
-  }
-  @media only screen and (max-width: 1000px) {
-    font-size: 30px;
+    font-size: 40px;
     margin-bottom: 40px;
   }
+  @media only screen and (max-width: 1000px) {
+    font-size: 28px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
   @media only screen and (max-width: 800px) {
-    font-size: 26px;
+    font-size: 24px;
     margin-bottom: 30px;
   }
   @media only screen and (max-width: 600px) {
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 25px;
   }
 `;
 const MessageImage = styled.img`
-  height: 834px;
-  width: 815px;
+  height: 634px;
+  width: 634px;
   @media only screen and (max-width: 1400px) {
     height: 700px;
     width: 700px;
@@ -928,13 +929,16 @@ const HowItWorksText = styled.div`
 `;
 const VideoWrapper = styled.div`
   height: 34vw;
-  width: 68vw;
+  width: 1200px;
   border-radius: 50px;
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 62px;
+  @media only screen and (max-width: 1600px) {
+    width: 85vw;
+  }
   @media only screen and (max-width: 1000px) {
     height: 50vw;
     width: 85vw;
@@ -1098,10 +1102,12 @@ const WhtsClikContent = styled.div`
   font-size: 28px;
   font-weight: 400;
   color: #444444;
+  width: 470px;
   @media only screen and (max-width: 1350px) {
     font-size: 25px;
   }
   @media only screen and (max-width: 1100px) {
+    width: auto;
     font-size: 23px;
   }
   @media only screen and (max-width: 1000px) {

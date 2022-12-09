@@ -259,8 +259,9 @@ const HeaderWrapper = styled.div`
   height: 215px;
 
   background-color: white;
-  padding: 0px 10vw;
+  padding: 0px 230px;
   @media only screen and (max-width: 1500px) {
+    padding: 0px 10vw;
     height: 200px;
   }
   @media only screen and (max-width: 1300px) {
@@ -350,7 +351,7 @@ const NavigationWrapper = styled.div`
   align-items: center;
   margin-top: 20px;
   margin-bottom: 0px;
-  width: 55vw;
+  width: 50vw;
 `;
 
 const NavigationButton = styled.div<{
